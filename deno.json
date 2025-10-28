@@ -1,0 +1,38 @@
+{
+  "name": "@YuukiHayashi0510/core",
+  "description": "My favorite core library",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./mod.ts",
+    "./result": "./result.ts"
+  },
+  "publish": {
+    "exclude": [
+      "docs",
+      ".github",
+      ".gitignore",
+      "*.test.ts"
+    ]
+  },
+  "tasks": {
+    "docs": "deno doc --output=docs --html mod.ts result.ts",
+    "docs:serve": {
+      "command": "deno run --allow-net --allow-read=./docs jsr:@std/http/file-server ./docs",
+      "dependencies": [
+        "docs"
+      ]
+    },
+    "lint": "deno lint",
+    "fmt:check": "deno fmt --check",
+    "check": {
+      "command": "deno check . && deno publish --dry-run",
+      "dependencies": [
+        "lint",
+        "fmt:check"
+      ]
+    }
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}
