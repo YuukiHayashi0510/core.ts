@@ -2,17 +2,15 @@
 
 My favorite ts utility.
 
-<!-- TODO: CIのバッジを入れる -->
+[![Publish](https://github.com/YuukiHayashi0510/core.ts/actions/workflows/publish.yaml/badge.svg)](https://github.com/YuukiHayashi0510/core.ts/actions/workflows/publish.yaml)
 
 ## Installation
 
-<!-- TODO: 記載 -->
+```sh
+npx jsr add @yuukihayashi0510/core
+``` 
 
-<!-- ```sh
-npx jsr add @YuukiHayashi0510/core
-``` -->
-
-<!-- Published to [JSR](https://jsr.io/@YuukiHayashi0510/core) -->
+Published to [JSR](https://jsr.io/@yuukihayashi0510/core)
 
 ## Usage
 
