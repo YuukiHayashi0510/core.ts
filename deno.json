@@ -1,7 +1,8 @@
 {
-  "name": "@YuukiHayashi0510/core",
+  "name": "@yuukihayashi0510/core",
   "description": "My favorite core library",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "license": "MIT",
   "exports": {
     ".": "./mod.ts",
     "./result": "./result.ts"
