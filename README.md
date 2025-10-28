@@ -5,6 +5,7 @@ My favorite ts utility.
 <!-- TODO: CIのバッジを入れる -->
 
 ## Installation
+
 <!-- TODO: 記載 -->
 
 <!-- ```sh
