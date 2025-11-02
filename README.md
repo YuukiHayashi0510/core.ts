@@ -8,7 +8,7 @@ My favorite ts utility.
 
 ```sh
 npx jsr add @yuukihayashi0510/core
-``` 
+```
 
 Published to [JSR](https://jsr.io/@yuukihayashi0510/core)
 
