@@ -85,3 +85,19 @@ export function isFailure<T, E extends Error>(
 ): result is Failure<E> {
   return result[TAG] === "failure";
 }
+
+/**
+ * Wrap an async function call into an AsyncResult.
+ * @param fn The async function to call.
+ * @param cleanup Optional cleanup function to call after completion.
+ * @returns {AsyncResult<T, E>} The result of the async call wrapped in an AsyncResult.
+ */
+export function wrapAsyncCall<T, E extends Error>(
+  fn: () => Promise<T>,
+  cleanup?: () => void,
+): AsyncResult<T, E> {
+  return fn()
+    .then(success)
+    .catch(failure)
+    .finally(cleanup);
+}
