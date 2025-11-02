@@ -1,5 +1,5 @@
-import { describe, it } from "jsr:@std/testing/bdd";
-import { assertEquals } from "https://deno.land/std@0.83.0/testing/asserts.ts";
+import { describe, it } from "@std/testing/bdd";
+import { assertEquals } from "@std/assert";
 import {
   failure,
   isFailure,
