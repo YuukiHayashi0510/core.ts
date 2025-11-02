@@ -98,6 +98,8 @@ export function wrapAsyncCall<T>(
 ): AsyncResult<T, Error> {
   return fn()
     .then(success)
-    .catch((err: unknown) => failure(err instanceof Error ? err : new Error(String(err))))
+    .catch((err: unknown) =>
+      failure(err instanceof Error ? err : new Error(String(err)))
+    )
     .finally(cleanup);
 }
