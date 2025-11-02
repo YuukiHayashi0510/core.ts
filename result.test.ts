@@ -104,6 +104,11 @@ describe("Result module", () => {
       happyCases.forEach(({ name, result, expected, description }) => {
         it(`should handle ${name} - ${description}`, () => {
           assertEquals(isSuccess(result), expected);
+          if (isSuccess(result)) {
+            assertEquals("data" in result, true);
+          } else {
+            assertEquals("error" in result, true);
+          }
         });
       });
     });
@@ -129,6 +134,11 @@ describe("Result module", () => {
       happyCases.forEach(({ name, result, expected, description }) => {
         it(`should handle ${name} - ${description}`, () => {
           assertEquals(isFailure(result), expected);
+          if (isFailure(result)) {
+            assertEquals("error" in result, true);
+          } else {
+            assertEquals("data" in result, true);
+          }
         });
       });
     });
