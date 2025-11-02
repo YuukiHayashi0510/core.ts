@@ -1,17 +1,41 @@
 import { describe, it } from "@std/testing/bdd";
 import { assertEquals } from "@std/assert";
-import {
-  failure,
-  isFailure,
-  isSuccess,
-  success,
-} from "./result.ts";
+import { failure, isFailure, isSuccess, success } from "./result.ts";
 
 describe("Result module", () => {
   describe("success", () => {
-    it("should create a success result with the given value", () => {
-      const result = success(42);
-      assertEquals(result.data, 42);
+    describe("happy path", () => {
+      it("should create a success result with the given value", () => {
+        const result = success(42);
+        assertEquals(result.data, 42);
+      });
+    });
+
+    describe("edge case testing", () => {
+      const edgeCases = [
+        {
+          name: "object value",
+          value: { key: "value" },
+          description: "will return the same object as data",
+        },
+        {
+          name: "null value",
+          value: null,
+          description: "will return null as data",
+        },
+        {
+          name: "undefined value",
+          value: undefined,
+          description: "will return undefined as data",
+        },
+      ];
+
+      edgeCases.forEach(({ name, value, description }) => {
+        it(`should handle ${name} - ${description}`, () => {
+          const result = success(value);
+          assertEquals(result.data, value);
+        });
+      });
     });
   });
 
