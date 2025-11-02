@@ -90,14 +90,14 @@ export function isFailure<T, E extends Error>(
  * Wrap an async function call into an AsyncResult.
  * @param fn The async function to call.
  * @param cleanup Optional cleanup function to call after completion.
- * @returns {AsyncResult<T, E>} The result of the async call wrapped in an AsyncResult.
+ * @returns {AsyncResult<T, Error>} The result of the async call wrapped in an AsyncResult.
  */
-export function wrapAsyncCall<T, E extends Error>(
+export function wrapAsyncCall<T>(
   fn: () => Promise<T>,
   cleanup?: () => void,
-): AsyncResult<T, E> {
+): AsyncResult<T, Error> {
   return fn()
     .then(success)
-    .catch(failure)
+    .catch((err: unknown) => failure(err instanceof Error ? err : new Error(String(err))))
     .finally(cleanup);
 }
