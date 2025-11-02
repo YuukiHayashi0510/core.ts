@@ -85,14 +85,27 @@ describe("Result module", () => {
   });
 
   describe("isSuccess", () => {
-    it("should return true for success result", () => {
-      const result = success(42);
-      assertEquals(isSuccess(result), true);
-    });
+    describe("happy path", () => {
+      const happyCases = [
+        {
+          name: "on success result",
+          result: success(100),
+          expected: true,
+          description: "should return true for success result",
+        },
+        {
+          name: "on failure result",
+          result: failure(new Error("failure")),
+          expected: false,
+          description: "should return false for failure result",
+        },
+      ];
 
-    it("should return false for failure result", () => {
-      const result = failure(new Error("test"));
-      assertEquals(isSuccess(result), false);
+      happyCases.forEach(({ name, result, expected, description }) => {
+        it(`should handle ${name} - ${description}`, () => {
+          assertEquals(isSuccess(result), expected);
+        });
+      });
     });
   });
 
