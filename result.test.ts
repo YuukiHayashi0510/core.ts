@@ -2,8 +2,6 @@ import { describe, it } from "@std/testing/bdd";
 import { assertEquals } from "@std/assert";
 import { failure, isFailure, isSuccess, success } from "./result.ts";
 
-class CustomError extends Error {}
-
 describe("Result module", () => {
   describe("success", () => {
     describe("happy path", () => {
@@ -52,6 +50,8 @@ describe("Result module", () => {
     });
 
     describe("edge case", () => {
+      class CustomError extends Error {}
+
       const edgeCases = [
         {
           name: "object value",
