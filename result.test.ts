@@ -14,24 +14,24 @@ describe("Result module", () => {
     describe("edge case", () => {
       const edgeCases = [
         {
-          name: "object value",
+          outline: "object value",
           value: { key: "value" },
-          description: "will return the same object as data",
+          detail: "will return the same object as data",
         },
         {
-          name: "null value",
+          outline: "null value",
           value: null,
-          description: "will return null as data",
+          detail: "will return null as data",
         },
         {
-          name: "undefined value",
+          outline: "undefined value",
           value: undefined,
-          description: "will return undefined as data",
+          detail: "will return undefined as data",
         },
       ];
 
-      edgeCases.forEach(({ name, value, description }) => {
-        it(`should handle ${name} - ${description}`, () => {
+      edgeCases.forEach(({ outline, value, detail }) => {
+        it(`should handle ${outline} - ${detail}`, () => {
           const result = success(value);
           assertEquals(result.data, value);
         });
@@ -54,29 +54,29 @@ describe("Result module", () => {
 
       const edgeCases = [
         {
-          name: "object value",
+          outline: "object value",
           error: { message: "custom error occurred" },
-          description: "will return the same object as error",
+          detail: "will return the same object as error",
         },
         {
-          name: "null value",
+          outline: "null value",
           error: null,
-          description: "will return null as error",
+          detail: "will return null as error",
         },
         {
-          name: "undefined value",
+          outline: "undefined value",
           error: undefined,
-          description: "will return undefined as error",
+          detail: "will return undefined as error",
         },
         {
-          name: "CustomError instance",
+          outline: "CustomError instance",
           error: new CustomError("custom error occurred"),
-          description: "will return the CustomError instance as error",
+          detail: "will return the CustomError instance as error",
         },
       ];
 
-      edgeCases.forEach(({ name, error, description }) => {
-        it(`should handle ${name} - ${description}`, () => {
+      edgeCases.forEach(({ outline, error, detail }) => {
+        it(`should handle ${outline} - ${detail}`, () => {
           const result = failure(error as Error);
           assertEquals(result.error, error);
         });
@@ -88,21 +88,21 @@ describe("Result module", () => {
     describe("happy path", () => {
       const happyCases = [
         {
-          name: "on success result",
+          outline: "on success result",
           result: success(100),
           expected: true,
-          description: "should return true for success result",
+          detail: "should return true for success result",
         },
         {
-          name: "on failure result",
+          outline: "on failure result",
           result: failure(new Error("failure")),
           expected: false,
-          description: "should return false for failure result",
+          detail: "should return false for failure result",
         },
       ];
 
-      happyCases.forEach(({ name, result, expected, description }) => {
-        it(`should handle ${name} - ${description}`, () => {
+      happyCases.forEach(({ outline, result, expected, detail }) => {
+        it(`should handle ${outline} - ${detail}`, () => {
           assertEquals(isSuccess(result), expected);
           assertEquals("data" in result, isSuccess(result));
         });
@@ -114,21 +114,21 @@ describe("Result module", () => {
     describe("happy path", () => {
       const happyCases = [
         {
-          name: "on failure result",
+          outline: "on failure result",
           result: failure(new Error("failure")),
           expected: true,
-          description: "should return true for failure result",
+          detail: "should return true for failure result",
         },
         {
-          name: "on success result",
+          outline: "on success result",
           result: success(100),
           expected: false,
-          description: "should return false for success result",
+          detail: "should return false for success result",
         },
       ];
 
-      happyCases.forEach(({ name, result, expected, description }) => {
-        it(`should handle ${name} - ${description}`, () => {
+      happyCases.forEach(({ outline, result, expected, detail }) => {
+        it(`should handle ${outline} - ${detail}`, () => {
           assertEquals(isFailure(result), expected);
           assertEquals("error" in result, isFailure(result));
         });
