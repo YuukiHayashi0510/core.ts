@@ -55,17 +55,17 @@ describe("Result module", () => {
       const edgeCases = [
         {
           outline: "object value",
-          error: { message: "custom error occurred" },
+          error: { message: "custom error occurred" } as Error,
           detail: "will return the same object as error",
         },
         {
           outline: "null value",
-          error: null,
+          error: null as unknown as Error,
           detail: "will return null as error",
         },
         {
           outline: "undefined value",
-          error: undefined,
+          error: undefined as unknown as Error,
           detail: "will return undefined as error",
         },
         {
@@ -77,7 +77,7 @@ describe("Result module", () => {
 
       edgeCases.forEach(({ outline, error, detail }) => {
         it(`should handle ${outline} - ${detail}`, () => {
-          const result = failure(error as Error);
+          const result = failure(error);
           assertEquals(result.error, error);
         });
       });
