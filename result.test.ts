@@ -13,7 +13,7 @@ describe("Result module", () => {
       });
     });
 
-    describe("edge case testing", () => {
+    describe("edge case", () => {
       const edgeCases = [
         {
           name: "object value",
@@ -51,7 +51,7 @@ describe("Result module", () => {
       });
     });
 
-    describe("edge case testing", () => {
+    describe("edge case", () => {
       const edgeCases = [
         {
           name: "object value",
