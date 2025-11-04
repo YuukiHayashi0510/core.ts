@@ -90,7 +90,7 @@ export function isFailure<T, E extends Error>(
  * Wrap an async function call into an AsyncResult.
  * @param fn The async function to call.
  * @param cleanup Optional cleanup function to call after completion.
- * @returns {AsyncResult<T, Error>} The result of the async call wrapped in an AsyncResult.
+ * @returns The result of the async call wrapped in an AsyncResult.
  */
 export function wrapAsyncCall<T>(
   fn: () => Promise<T>,
