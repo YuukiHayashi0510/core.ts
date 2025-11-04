@@ -22,22 +22,22 @@ describe("Result module", () => {
         {
           outline: "object value",
           value: { key: "value" },
-          detail: "will return the same object as data",
+          expect: "will return the same object as data",
         },
         {
           outline: "null value",
           value: null,
-          detail: "will return null as data",
+          expect: "will return null as data",
         },
         {
           outline: "undefined value",
           value: undefined,
-          detail: "will return undefined as data",
+          expect: "will return undefined as data",
         },
       ];
 
-      edgeCases.forEach(({ outline, value, detail }) => {
-        it(`should handle ${outline} - ${detail}`, () => {
+      edgeCases.forEach(({ outline, value, expect }) => {
+        it(`should handle ${outline} - ${expect}`, () => {
           const result = success(value);
           assertEquals(result.data, value);
         });
@@ -62,27 +62,27 @@ describe("Result module", () => {
         {
           outline: "object value",
           error: { message: "custom error occurred" } as Error,
-          detail: "will return the same object as error",
+          expect: "will return the same object as error",
         },
         {
           outline: "null value",
           error: null as unknown as Error,
-          detail: "will return null as error",
+          expect: "will return null as error",
         },
         {
           outline: "undefined value",
           error: undefined as unknown as Error,
-          detail: "will return undefined as error",
+          expect: "will return undefined as error",
         },
         {
           outline: "CustomError instance",
           error: new CustomError("custom error occurred"),
-          detail: "will return the CustomError instance as error",
+          expect: "will return the CustomError instance as error",
         },
       ];
 
-      edgeCases.forEach(({ outline, error, detail }) => {
-        it(`should handle ${outline} - ${detail}`, () => {
+      edgeCases.forEach(({ outline, error, expect }) => {
+        it(`should handle ${outline} - ${expect}`, () => {
           const result = failure(error);
           assertEquals(result.error, error);
         });
@@ -97,18 +97,18 @@ describe("Result module", () => {
           outline: "on success result",
           result: success(100),
           expected: true,
-          detail: "should return true for success result",
+          expect: "should return true for success result",
         },
         {
           outline: "on failure result",
           result: failure(new Error("failure")),
           expected: false,
-          detail: "should return false for failure result",
+          expect: "should return false for failure result",
         },
       ];
 
-      happyCases.forEach(({ outline, result, expected, detail }) => {
-        it(`should handle ${outline} - ${detail}`, () => {
+      happyCases.forEach(({ outline, result, expected, expect }) => {
+        it(`should handle ${outline} - ${expect}`, () => {
           assertEquals(isSuccess(result), expected);
           assertEquals("data" in result, isSuccess(result));
         });
@@ -123,18 +123,18 @@ describe("Result module", () => {
           outline: "on failure result",
           result: failure(new Error("failure")),
           expected: true,
-          detail: "should return true for failure result",
+          expect: "should return true for failure result",
         },
         {
           outline: "on success result",
           result: success(100),
           expected: false,
-          detail: "should return false for success result",
+          expect: "should return false for success result",
         },
       ];
 
-      happyCases.forEach(({ outline, result, expected, detail }) => {
-        it(`should handle ${outline} - ${detail}`, () => {
+      happyCases.forEach(({ outline, result, expected, expect }) => {
+        it(`should handle ${outline} - ${expect}`, () => {
           assertEquals(isFailure(result), expected);
           assertEquals("error" in result, isFailure(result));
         });
