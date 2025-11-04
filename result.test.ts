@@ -58,20 +58,24 @@ describe("Result module", () => {
     describe("edge case", () => {
       class CustomError extends Error {}
 
-      const edgeCases = [
+      const edgeCases: {
+        outline: string;
+        error: unknown;
+        expect: string;
+      }[] = [
         {
           outline: "object value",
-          error: { message: "custom error occurred" } as Error,
+          error: { message: "custom error occurred" },
           expect: "will return the same object as error",
         },
         {
           outline: "null value",
-          error: null as unknown as Error,
+          error: null,
           expect: "will return null as error",
         },
         {
           outline: "undefined value",
-          error: undefined as unknown as Error,
+          error: undefined,
           expect: "will return undefined as error",
         },
         {
@@ -83,7 +87,7 @@ describe("Result module", () => {
 
       edgeCases.forEach(({ outline, error, expect }) => {
         it(`should handle ${outline} - ${expect}`, () => {
-          const result = failure(error);
+          const result = failure(error as Error);
           assertEquals(result.error, error);
         });
       });
