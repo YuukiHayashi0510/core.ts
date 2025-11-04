@@ -22,7 +22,6 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-
 // Success case: Wrap async calls to handle errors safely
 const result1 = await wrapAsyncCall(async () => {
   await sleep(1000);
@@ -46,7 +45,6 @@ if (isSuccess(result2)) {
 } else {
   console.error(result2.error.message); // "Something went wrong!"
 }
-
 ```
 
 ## Benchmark
