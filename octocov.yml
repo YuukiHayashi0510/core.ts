@@ -1,0 +1,16 @@
+coverage:
+  if: is_pull_request
+  acceptable: current >= 40%
+  paths:
+    - coverage.lcov
+summary:
+  if: true
+comment:
+  if: is_pull_request
+  deletePrevious: true
+codeToTestRatio:
+  code:
+    - "**/*.ts"
+    - "!**/*.test.ts"
+  test:
+    - "**/*.test.ts"

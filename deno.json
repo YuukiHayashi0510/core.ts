@@ -12,7 +12,8 @@
       "docs",
       ".github",
       ".gitignore",
-      "*.test.ts"
+      "*.test.ts",
+      ".gemini"
     ]
   },
   "tasks": {
