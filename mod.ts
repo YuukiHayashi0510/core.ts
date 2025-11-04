@@ -14,4 +14,5 @@ export {
   isSuccess,
   type Result,
   success,
+  wrapAsyncCall,
 } from "./result.ts";
