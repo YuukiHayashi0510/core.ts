@@ -1,3 +1,6 @@
+coverage:
+  paths:
+    - coverage/cov.lcov
 comment:
 codeToTestRatio:
   code:
