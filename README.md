@@ -17,36 +17,36 @@ Published to [JSR](https://jsr.io/@yuukihayashi0510/core)
 ```ts
 import { isSuccess, wrapAsyncCall } from "@yuukihayashi0510/core";
 
-(async () => {
-  // Simple async function example
-  function sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
+// Simple async function example
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-  // Success case: Wrap async calls to handle errors safely
-  const result1 = await wrapAsyncCall(async () => {
-    await sleep(1000);
-    return "Success!";
-  });
 
-  if (isSuccess(result1)) {
-    console.log(result1.data); // "Success!"
-  } else {
-    console.error(result1.error.message);
-  }
+// Success case: Wrap async calls to handle errors safely
+const result1 = await wrapAsyncCall(async () => {
+  await sleep(1000);
+  return "Success!";
+});
 
-  // Failure case: Errors are caught and wrapped in a Failure result
-  const result2 = await wrapAsyncCall(async () => {
-    await sleep(500);
-    throw new Error("Something went wrong!");
-  });
+if (isSuccess(result1)) {
+  console.log(result1.data); // "Success!"
+} else {
+  console.error(result1.error.message);
+}
 
-  if (isSuccess(result2)) {
-    console.log(result2.data);
-  } else {
-    console.error(result2.error.message); // "Something went wrong!"
-  }
-})();
+// Failure case: Errors are caught and wrapped in a Failure result
+const result2 = await wrapAsyncCall(async () => {
+  await sleep(500);
+  throw new Error("Something went wrong!");
+});
+
+if (isSuccess(result2)) {
+  console.log(result2.data);
+} else {
+  console.error(result2.error.message); // "Something went wrong!"
+}
+
 ```
 
 ## Benchmark
