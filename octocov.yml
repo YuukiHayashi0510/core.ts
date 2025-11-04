@@ -1,7 +1,7 @@
 comment:
 codeToTestRatio:
   code:
-    - "./*.ts"
-    - "!./*.test.ts"
+    - "**/*.ts"
+    - "!**/*.test.ts"
   test:
-    - "./*.test.ts"
+    - "**/*.test.ts"
