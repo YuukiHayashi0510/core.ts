@@ -2,6 +2,8 @@ coverage:
   paths:
     - coverage/cov.lcov
 comment:
+  if: is_pull_request
+  deletePrevious: true
 codeToTestRatio:
   code:
     - "**/*.ts"
