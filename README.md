@@ -38,4 +38,6 @@ if (isSuccess(result)) {
 
 ## Benchmark
 
+Coming soon...
+
 <!-- TODO: 記載 -->
