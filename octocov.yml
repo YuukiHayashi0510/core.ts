@@ -2,7 +2,7 @@ coverage:
   if: is_pull_request
   acceptable: current >= 40%
   paths:
-    - coverage/cov.lcov
+    - coverage/lcov.info
 comment:
   if: is_pull_request
   deletePrevious: true

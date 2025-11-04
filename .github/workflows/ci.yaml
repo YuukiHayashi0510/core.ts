@@ -42,7 +42,4 @@ jobs:
       - name: Tests
         run: deno test --parallel --coverage=coverage
 
-      - name: Generate Coverage Report
-        run: deno coverage --lcov --output=cov.lcov ./coverage
-
       - uses: k1LoW/octocov-action@v1
