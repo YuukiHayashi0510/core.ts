@@ -1,5 +1,5 @@
 import { describe, it } from "@std/testing/bdd";
-import { assertEquals, assertExists } from "@std/assert";
+import { assert, assertEquals, assertExists } from "@std/assert";
 import { isFailure, isSuccess, wrapAsyncCall } from "./result.ts";
 
 describe("wrapAsyncCall", () => {
@@ -7,10 +7,8 @@ describe("wrapAsyncCall", () => {
     const result = await wrapAsyncCall(() => Promise.resolve(42));
 
     assertExists(result);
-    assertEquals(isSuccess(result), true);
-    if (isSuccess(result)) {
-      assertEquals(result.data, 42);
-    }
+    assert(isSuccess(result));
+    assertEquals(result.data, 42);
   });
 
   it("should handle Error instances", async () => {
@@ -18,22 +16,18 @@ describe("wrapAsyncCall", () => {
     const result = await wrapAsyncCall(() => Promise.reject(expectedError));
 
     assertExists(result);
-    assertEquals(isFailure(result), true);
-    if (isFailure(result)) {
-      assertEquals(result.error, expectedError);
-      assertEquals(result.error.message, "test error");
-    }
+    assert(isFailure(result));
+    assertEquals(result.error, expectedError);
+    assertEquals(result.error.message, "test error");
   });
 
   it("should convert non-Error thrown values to Error", async () => {
     const result = await wrapAsyncCall(() => Promise.reject("string error"));
 
     assertExists(result);
-    assertEquals(isFailure(result), true);
-    if (isFailure(result)) {
-      assertEquals(result.error instanceof Error, true);
-      assertEquals(result.error.message, "string error");
-    }
+    assert(isFailure(result));
+    assertEquals(result.error instanceof Error, true);
+    assertEquals(result.error.message, "string error");
   });
 
   it("should call cleanup function on success", async () => {
