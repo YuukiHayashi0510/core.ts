@@ -18,7 +18,6 @@ describe("wrapAsyncCall", () => {
     assertExists(result);
     assert(isFailure(result));
     assertEquals(result.error, expectedError);
-    assertEquals(result.error.message, "test error");
   });
 
   it("should convert non-Error thrown values to Error", async () => {
@@ -26,7 +25,7 @@ describe("wrapAsyncCall", () => {
 
     assertExists(result);
     assert(isFailure(result));
-    assertEquals(result.error instanceof Error, true);
+    assert(result.error instanceof Error);
     assertEquals(result.error.message, "string error");
   });
 
@@ -38,8 +37,8 @@ describe("wrapAsyncCall", () => {
 
     const result = await wrapAsyncCall(() => Promise.resolve(42), cleanup);
 
-    assertEquals(cleanupCalled, true);
-    assertEquals(isSuccess(result), true);
+    assert(cleanupCalled);
+    assert(isSuccess(result));
   });
 
   it("should call cleanup function on failure", async () => {
@@ -53,8 +52,8 @@ describe("wrapAsyncCall", () => {
       cleanup,
     );
 
-    assertEquals(cleanupCalled, true);
-    assertEquals(isFailure(result), true);
+    assert(cleanupCalled);
+    assert(isFailure(result));
   });
 
   it("should call cleanup function exactly once", async () => {
