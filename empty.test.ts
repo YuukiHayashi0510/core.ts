@@ -33,7 +33,18 @@ describe("Empty module", () => {
 
   describe("isNotEmpty", () => {
     it("should return the negation of isEmpty", () => {
-      const testValues = [null, undefined, "", "text", false, true, [], [1], {}, { a: 1 }];
+      const testValues = [
+        null,
+        undefined,
+        "",
+        "text",
+        false,
+        true,
+        [],
+        [1],
+        {},
+        { a: 1 },
+      ];
       testValues.forEach((value) => {
         assertEquals(!isEmpty(value), isNotEmpty(value));
       });
@@ -60,13 +71,13 @@ describe("Empty module", () => {
 
   describe("isAllEmpty", () => {
     const cases = [
-        { values: [null, undefined, ""], expected: true },
-        { values: [null, "text", ""], expected: false },
-        { values: [false, NaN, BigInt(0)], expected: true },
-        { values: [false, true, NaN], expected: false },
-        { values: [[], {}], expected: true },
-        { values: [[], { key: "value" }], expected: false },
-      ];
+      { values: [null, undefined, ""], expected: true },
+      { values: [null, "text", ""], expected: false },
+      { values: [false, NaN, BigInt(0)], expected: true },
+      { values: [false, true, NaN], expected: false },
+      { values: [[], {}], expected: true },
+      { values: [[], { key: "value" }], expected: false },
+    ];
 
     cases.forEach(({ values, expected }) => {
       it(`should return ${expected} for isAllEmpty(${values})`, () => {
